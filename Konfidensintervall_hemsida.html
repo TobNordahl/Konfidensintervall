@@ -828,6 +828,16 @@ function Analythic_ver2(sigma, mu, T0, T1, T2, sal, p, M, högtUtfall, lågtUtfa
     tjänstepenisons_omräkning(salL, helpDT, type, T0, T1, T2);
     return ;
 }
+
+function addForm(name,tableName){
+    n = document.getElementById(name)
+    var tr = n.parentNode.cloneNode(true);
+    document.getElementById(tableName).appendChild(tr);
+}
+
+function removeForm(n){
+    n.parentNode.parentNode.remove();
+}
 </script>
 
 <script>
@@ -849,39 +859,102 @@ function Analythic_ver2(sigma, mu, T0, T1, T2, sal, p, M, högtUtfall, lågtUtfa
 
     <div class="row">
         <div class="col-md-12" style="background-color: #710684; border-radius: 10px ">
-            <table class="table" style="color: #fff">
+            <table class="table-responsive table-body" style="color: #fff; margin-top: 0px" id="tbl_IP">
                 <thead>
                     <tr>
-                        <th>
-                            Kapital
-                        </th>
-                        <th>
-                            Traditionell
-                        </th>
-                        <th>
-                            År
-                        </th>
-                        <th>
-                            Period
-                        </th>
+                        <th>Inkomstpension</th>
+                    </tr>
+                    <tr>
+                        <th>År</th>
                     </tr>
                 </thead>
-                <tr>
-                    <th>
-                        <input id="text" type="text" placeholder="Kapital Kr" style="margin-top: 10px">
-                    </th>
-                    <th>
-                        <input id="text" type="text" placeholder="Traditionell Kr/mån" style="margin-top: 10px">
-                    </th>
-                    <th>
-                        <input id="text" type="text" placeholder="År" style="margin-top: 10px">                        </th>
-                    <th>
-                        <input id="text" type="text" placeholder="Period" style="margin-top: 10px">
-                    </th>
-                </tr>
-            </table>
+                <tbody>
+                    <tr id="IP_Table">
+                        <td><input type="text" placeholder="År" ></td>
+                    </tr>
+                </tbody>            
+            </table>  
+
+            <table class="table-responsive table-body" style="color: #fff; margin-top: 0px" id="tbl_PP">
+                <thead>
+                    <tr>
+                        <th>PremiePension</th>
+                        <td><input type="submit" class="button" value="Lägg Till" onclick="addForm('PP_Table','tbl_PP');"/></td>
+                    </tr>
+                    <tr>
+                        <th>År</th>
+                        <th>Trad</th>
+                        <th>risk</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="PP_Table">
+                        <td><input type="text" placeholder="År" ></td>
+                        <td><input type="text" placeholder="Traditionell Kr/mån" ></td>
+                        <td><input type="text" placeholder="Risk" ></td>
+                        <td><input type="submit" class="button" value="Tag Bort" onclick="removeForm(this);"/></td>
+                    </tr>
+                </tbody>            
+            </table>  
+            
+            <table class="table-responsive table-body" style="color: #fff; margin-top: 0px" id="tbl_TP">
+                    <thead>
+                        <tr>
+                            <th>Tjänstepension</th>
+                            <td><input type="submit" class="button" value="Lägg Till" onclick="addForm('TP_Table','tbl_TP');"/></td>
+                        </tr>
+                        <tr>
+                            <th>År</th>
+                            <th>Utags Period</th>
+                            <th>Kapital</th>
+                            <th>Trad</th>
+                            <th>risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="TP_Table">
+                            <td><input type="text" placeholder="År" ></td>
+                            <td><input type="text" placeholder="Utags Period" ></td>
+                            <td><input type="text" placeholder="Kapital kr" ></td>
+                            <td><input type="text" placeholder="Traditionell kr/mån" ></td>
+                            <td><input type="text" placeholder="Risk" ></td>
+                            <td><input type="submit" class="button" value="Tag Bort" onclick="removeForm(this);"/></td>
+                        </tr>
+                    </tbody>            
+                </table>        
+
+                <table class="table-responsive table-body" style="color: #fff; margin-top: 0px" id="tbl_PS">
+                        <thead>
+                            <tr>
+                                <th>PrivatPension</th>
+                                <td><input type="submit" class="button" value="Lägg Till" onclick="addForm('PS_Table','tbl_PS');"/></td>
+                            </tr>
+                            <tr>
+                                <th>År</th>
+                                <th>Utags Period</th>
+                                <th>Kapital</th>
+                                <th>Trad</th>
+                                <th>risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="PS_Table">
+                                <td><input type="text" placeholder="År" ></td>
+                                <td><input type="text" placeholder="Utags Period" ></td>
+                                <td><input type="text" placeholder="Kapital kr" ></td>
+                                <td><input type="text" placeholder="Traditionell kr/mån" ></td>
+                                <td><input type="text" placeholder="Risk" ></td>
+                                <td><input type="submit" class="button" value="Tag Bort" onclick="removeForm(this);"/></td>
+                            </tr>
+                        </tbody>            
+                    </table>
+                    <table>
+                            <input type="submit" class="button" value="Kör" onclick="removeForm(this);" style="margin-top: 20px"/>
+                    </table>
         </div>
     </div>
+
+    
 
 
 </body>
